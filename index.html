@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flowline Consulting | Supply-Chain Strategy &amp; Technology</title>
+  <meta name="description" content="Flowline Consulting helps organizations transform complex supply-chain challenges into smarter, data-driven decisions through strategy, analytics, and AI-powered solutions." />
+  <meta name="theme-color" content="#0b1b2e" />
+
+  <meta property="og:title" content="Flowline Consulting" />
+  <meta property="og:description" content="Smarter flow. Stronger operations. Supply-chain strategy, analytics, and AI-powered decision support." />
+  <meta property="og:type" content="website" />
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <!-- ============ ICON SPRITE (reused throughout the page) ============ -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-trend" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></symbol>
+    <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6"/><path d="M10 21.5h4"/><path d="M12 2.5a6.5 6.5 0 0 0-3.8 11.8c.5.4.8 1 .8 1.7v.5h6V16c0-.7.3-1.3.8-1.7A6.5 6.5 0 0 0 12 2.5z"/></symbol>
+    <symbol id="i-route" viewBox="0 0 24 24"><circle cx="5.5" cy="19" r="2"/><circle cx="18.5" cy="5" r="2"/><path d="M7.5 19h9a3.5 3.5 0 0 0 0-7h-9a3.5 3.5 0 0 1 0-7h9"/></symbol>
+    <symbol id="i-box" viewBox="0 0 24 24"><path d="M21 7.5l-9-5-9 5v9l9 5 9-5z"/><path d="M3 7.5l9 5 9-5"/><path d="M12 12.5v9"/><path d="M7.5 5l9 5"/></symbol>
+    <symbol id="i-truck" viewBox="0 0 24 24"><rect x="1.5" y="5" width="12.5" height="10" rx="1"/><path d="M14 8h4l3.5 3.5V15H14"/><circle cx="6" cy="17.5" r="2"/><circle cx="17" cy="17.5" r="2"/></symbol>
+    <symbol id="i-branch" viewBox="0 0 24 24"><circle cx="5" cy="12" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="19" cy="19" r="2"/><path d="M7 12h3c2.5 0 3-2 3.5-4s1.5-3 3.5-3"/><path d="M10 12c2.5 0 3 2 3.5 4s1.5 3 3.5 3"/></symbol>
+    <symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></symbol>
+    <symbol id="i-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5 5-5.5"/></symbol>
+    <symbol id="i-calc" viewBox="0 0 24 24"><rect x="4.5" y="2.5" width="15" height="19" rx="2"/><path d="M8 7h8"/><path d="M8 11.5h1.5M11.25 11.5h1.5M14.5 11.5H16M8 15h1.5M11.25 15h1.5M14.5 15H16M8 18.5h1.5M11.25 18.5h1.5M14.5 18.5H16"/></symbol>
+    <symbol id="i-activity" viewBox="0 0 24 24"><path d="M22 12h-4l-3 8L9 4l-3 8H2"/></symbol>
+    <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21.5V3.5"/><path d="M5 4h13l-2.5 4.5L18 13H5"/></symbol>
+    <symbol id="i-action" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12h8"/><path d="M13 8.5l3.5 3.5-3.5 3.5"/></symbol>
+    <symbol id="i-rank" viewBox="0 0 24 24"><path d="M4 6h16M4 12h11M4 18h6"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 2.5H6.5a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V8z"/><path d="M14 2.5V8h5.5"/><path d="M8.5 13h7M8.5 17h4.5"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2.5l8 3v6c0 5-3.5 8.6-8 10.5-4.5-1.9-8-5.5-8-10.5v-6z"/><path d="M12 8v4.5"/><path d="M12 15.8h.01"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></symbol>
+    <symbol id="i-repeat" viewBox="0 0 24 24"><path d="M17 2.5l3.5 3.5L17 9.5"/><path d="M3.5 11V9.5a3.5 3.5 0 0 1 3.5-3.5h13.5"/><path d="M7 21.5L3.5 18 7 14.5"/><path d="M20.5 13v1.5a3.5 3.5 0 0 1-3.5 3.5H3.5"/></symbol>
+    <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="2.5" y="7" width="19" height="13.5" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M2.5 13h19"/></symbol>
+    <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3"/><path d="M1.5 14h5M9.5 8h5M17.5 16h5"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M4.5 12.5l5 5 10-11"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5"/><path d="M12 7.6h.01"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 2.5l9.5 5-9.5 5-9.5-5z"/><path d="M2.5 12l9.5 5 9.5-5"/><path d="M2.5 16.5l9.5 5 9.5-5"/></symbol>
+
+    <!-- Flowline logo mark: a route that forms a stylized "F" through three connected nodes -->
+    <symbol id="logo-mark" viewBox="0 0 40 40">
+      <rect width="40" height="40" rx="10" fill="#0b1b2e"/>
+      <path d="M12 31V15.5a6 6 0 0 1 6-6h11" fill="none" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round"/>
+      <path d="M12 21.5h12" fill="none" stroke="#2dd4bf" stroke-width="3.2" stroke-linecap="round"/>
+      <circle cx="12" cy="31" r="3.2" fill="#2dd4bf"/>
+      <circle cx="29.5" cy="9.5" r="3.2" fill="#ffffff"/>
+      <circle cx="25" cy="21.5" r="2.6" fill="#0b1b2e" stroke="#2dd4bf" stroke-width="2.2"/>
+    </symbol>
+  </svg>
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- ============ HEADER / NAVIGATION ============ -->
+  <header class="site-header" id="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#home" aria-label="Flowline Consulting, back to top">
+        <svg class="brand-mark" aria-hidden="true"><use href="#logo-mark"/></svg>
+        <span class="brand-name">Flowline <span>Consulting</span></span>
+      </a>
+
+      <nav class="primary-nav" aria-label="Primary">
+        <ul class="nav-list" id="nav-list">
+          <li><a href="#home" data-nav="home">Home</a></li>
+          <li><a href="#services" data-nav="services">Services</a></li>
+          <li><a href="#approach" data-nav="approach">Approach</a></li>
+          <li><a href="#solutions" data-nav="solutions">Solutions</a></li>
+          <li><a href="#impact" data-nav="impact">Impact</a></li>
+          <li><a href="#team" data-nav="team">Team</a></li>
+          <li class="nav-cta-item"><a href="#contact" data-nav="contact" class="nav-cta">Contact</a></li>
+        </ul>
+      </nav>
+
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobile-menu" hidden>
+      <nav aria-label="Mobile">
+        <ul>
+          <li><a href="#home" data-nav="home">Home</a></li>
+          <li><a href="#services" data-nav="services">Services</a></li>
+          <li><a href="#approach" data-nav="approach">Approach</a></li>
+          <li><a href="#solutions" data-nav="solutions">Solutions</a></li>
+          <li><a href="#impact" data-nav="impact">Impact</a></li>
+          <li><a href="#team" data-nav="team">Team</a></li>
+          <li><a href="#contact" data-nav="contact">Contact</a></li>
+        </ul>
+        <a href="#contact" class="btn btn-primary btn-block">Start a Conversation</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ 1. HERO ============ -->
+    <section class="hero" id="home" data-section="home" aria-labelledby="hero-title">
+      <div class="hero-grid-bg" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow eyebrow-light"><span class="eyebrow-dot"></span>Supply-chain strategy &amp; technology consulting</p>
+          <h1 id="hero-title">Smarter flow.<br /><span class="accent-text">Stronger operations.</span></h1>
+          <p class="hero-lead">Flowline Consulting helps organizations transform complex supply-chain challenges into smarter, data-driven decisions through strategy, analytics, and AI-powered solutions.</p>
+          <div class="hero-actions">
+            <a href="#solutions" class="btn btn-primary">Explore Our Solutions <svg class="btn-icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a href="#approach" class="btn btn-ghost-light">Our Approach</a>
+          </div>
+          <ul class="hero-tags" aria-label="Focus areas">
+            <li>Inventory</li>
+            <li>Logistics</li>
+            <li>Analytics</li>
+            <li>Decision Support</li>
+          </ul>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="network-card">
+            <div class="network-card-head">
+              <span class="nc-title">Network flow</span>
+              <span class="nc-live"><span class="pulse-dot"></span>Illustrative</span>
+            </div>
+            <svg class="network-svg" viewBox="0 0 520 360" role="presentation">
+              <defs>
+                <linearGradient id="route-grad" x1="0" x2="1" y1="0" y2="0">
+                  <stop offset="0" stop-color="#38bdf8" stop-opacity=".9"/>
+                  <stop offset="1" stop-color="#2dd4bf" stop-opacity=".9"/>
+                </linearGradient>
+              </defs>
+
+              <!-- routes -->
+              <g class="routes" fill="none" stroke-linecap="round">
+                <path id="r1" d="M70 80 C 160 80, 170 180, 255 180"/>
+                <path id="r2" d="M70 280 C 160 280, 170 180, 255 180"/>
+                <path id="r3" d="M265 180 C 350 180, 360 70, 450 70"/>
+                <path id="r4" d="M265 180 L 450 180"/>
+                <path id="r5" d="M265 180 C 350 180, 360 290, 450 290"/>
+              </g>
+              <g class="routes-flow" fill="none" stroke="url(#route-grad)" stroke-linecap="round">
+                <use href="#r1"/><use href="#r2"/><use href="#r3"/><use href="#r4"/><use href="#r5"/>
+              </g>
+
+              <!-- moving shipments -->
+              <g class="packets">
+                <circle r="4"><animateMotion dur="5s" repeatCount="indefinite"><mpath href="#r1"/></animateMotion></circle>
+                <circle r="4"><animateMotion dur="6s" begin="1.5s" repeatCount="indefinite"><mpath href="#r2"/></animateMotion></circle>
+                <circle r="4"><animateMotion dur="4.5s" begin=".5s" repeatCount="indefinite"><mpath href="#r3"/></animateMotion></circle>
+                <circle r="4"><animateMotion dur="4s" begin="2s" repeatCount="indefinite"><mpath href="#r4"/></animateMotion></circle>
+                <circle class="packet-alert" r="4"><animateMotion dur="7s" begin="1s" repeatCount="indefinite"><mpath href="#r5"/></animateMotion></circle>
+              </g>
+
+              <!-- supplier nodes -->
+              <g class="node">
+                <circle cx="70" cy="80" r="22"/>
+                <path class="node-ico" d="M60 88v-12l7 4v-4l7 4v-4l6 4v8z"/>
+              </g>
+              <g class="node">
+                <circle cx="70" cy="280" r="22"/>
+                <path class="node-ico" d="M60 288v-12l7 4v-4l7 4v-4l6 4v8z"/>
+              </g>
+              <text class="node-label" x="70" y="125" text-anchor="middle">Supplier</text>
+              <text class="node-label" x="70" y="325" text-anchor="middle">Supplier</text>
+
+              <!-- distribution center -->
+              <g class="node node-hub">
+                <circle class="hub-ring" cx="260" cy="180" r="44"/>
+                <circle cx="260" cy="180" r="32"/>
+                <path class="node-ico" d="M246 192v-14l14-8 14 8v14z M253 192v-8h14v8"/>
+              </g>
+              <text class="node-label node-label-strong" x="260" y="245" text-anchor="middle">Distribution Center</text>
+
+              <!-- store nodes -->
+              <g class="node">
+                <circle cx="450" cy="70" r="20"/>
+                <path class="node-ico" d="M441 66h18l-2-6h-14z M443 66v10h14v-10"/>
+              </g>
+              <g class="node">
+                <circle cx="450" cy="180" r="20"/>
+                <path class="node-ico" d="M441 176h18l-2-6h-14z M443 176v10h14v-10"/>
+              </g>
+              <g class="node node-warn">
+                <circle cx="450" cy="290" r="20"/>
+                <path class="node-ico" d="M441 286h18l-2-6h-14z M443 286v10h14v-10"/>
+              </g>
+              <text class="node-label" x="450" y="112" text-anchor="middle">Store</text>
+              <text class="node-label" x="450" y="222" text-anchor="middle">Store</text>
+              <text class="node-label" x="450" y="332" text-anchor="middle">Store</text>
+            </svg>
+          </div>
+
+          <div class="float-card float-card-alert">
+            <span class="fc-icon fc-icon-alert"><svg><use href="#i-shield"/></svg></span>
+            <div>
+              <p class="fc-title">Exception flagged</p>
+              <p class="fc-sub">Stock may run out before inbound shipment</p>
+            </div>
+          </div>
+
+          <div class="float-card float-card-chart">
+            <p class="fc-title">Days of supply</p>
+            <div class="mini-bars">
+              <span style="--h:78%"></span><span style="--h:64%"></span><span style="--h:70%"></span><span style="--h:52%"></span><span style="--h:40%"></span><span class="bar-warn" style="--h:24%"></span>
+            </div>
+            <p class="fc-sub">Sample trend</p>
+          </div>
+        </div>
+      </div>
+      <div class="hero-fade" aria-hidden="true"></div>
+    </section>
+
+    <!-- ============ 2. COMPANY OVERVIEW ============ -->
+    <section class="section" id="overview" data-section="home" aria-labelledby="overview-title">
+      <div class="container">
+        <div class="overview-grid">
+          <div class="overview-copy reveal">
+            <p class="eyebrow">Who we are</p>
+            <h2 id="overview-title">Supply chains move businesses. We help them move smarter.</h2>
+          </div>
+          <div class="overview-text reveal">
+            <p>Flowline Consulting works at the intersection of <strong>business strategy</strong>, <strong>supply-chain operations</strong>, <strong>analytics</strong>, and <strong>technology</strong>. Every engagement starts with the real operational problem: where work slows down, where information gets lost, and where decisions become difficult.</p>
+            <p>Only then do we apply technology, and only where it meaningfully improves performance. We don't introduce AI for the sake of using AI. We use it when it helps people see more clearly, act faster, and decide more consistently.</p>
+          </div>
+        </div>
+
+        <div class="card-grid card-grid-3">
+          <article class="value-card reveal">
+            <span class="icon-badge"><svg><use href="#i-eye"/></svg></span>
+            <h3>Visibility</h3>
+            <p>Turn complex operational data into clear, actionable insights.</p>
+          </article>
+          <article class="value-card reveal">
+            <span class="icon-badge"><svg><use href="#i-trend"/></svg></span>
+            <h3>Optimization</h3>
+            <p>Identify bottlenecks, inefficiencies, and opportunities across critical workflows.</p>
+          </article>
+          <article class="value-card reveal">
+            <span class="icon-badge"><svg><use href="#i-bulb"/></svg></span>
+            <h3>Intelligence</h3>
+            <p>Apply AI and analytics to support faster, better-informed business decisions.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 3. SERVICES ============ -->
+    <section class="section section-tint" id="services" data-section="services" aria-labelledby="services-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">Services</p>
+          <h2 id="services-title">What We Do</h2>
+          <p class="section-lead">Four connected practice areas that cover the full path from supplier to shelf.</p>
+        </header>
+
+        <div class="card-grid card-grid-4">
+          <article class="service-card reveal">
+            <span class="service-num" aria-hidden="true">01</span>
+            <span class="icon-badge icon-badge-lg"><svg><use href="#i-route"/></svg></span>
+            <h3>Supply Chain Strategy</h3>
+            <p>Analyze supply-chain processes, identify operational bottlenecks, and develop practical improvement strategies.</p>
+          </article>
+          <article class="service-card reveal">
+            <span class="service-num" aria-hidden="true">02</span>
+            <span class="icon-badge icon-badge-lg"><svg><use href="#i-box"/></svg></span>
+            <h3>Inventory &amp; Replenishment</h3>
+            <p>Improve visibility into inventory risk, stock availability, replenishment needs, and operational exceptions.</p>
+          </article>
+          <article class="service-card reveal">
+            <span class="service-num" aria-hidden="true">03</span>
+            <span class="icon-badge icon-badge-lg"><svg><use href="#i-truck"/></svg></span>
+            <h3>Logistics &amp; Operations</h3>
+            <p>Improve workflows involving suppliers, transportation, distribution, fulfillment, and store operations.</p>
+          </article>
+          <article class="service-card reveal">
+            <span class="service-num" aria-hidden="true">04</span>
+            <span class="icon-badge icon-badge-lg"><svg><use href="#i-branch"/></svg></span>
+            <h3>AI &amp; Decision Support</h3>
+            <p>Design AI-powered solutions that help managers understand complex operational information and make faster, more consistent decisions.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 4. APPROACH ============ -->
+    <section class="section" id="approach" data-section="approach" aria-labelledby="approach-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">Our Approach</p>
+          <h2 id="approach-title">From operational problem to practical solution</h2>
+          <p class="section-lead">A disciplined, four-step method that keeps every recommendation grounded in how the business actually runs.</p>
+        </header>
+
+        <ol class="process">
+          <li class="process-step reveal">
+            <div class="process-marker"><span>01</span></div>
+            <h3>Understand</h3>
+            <p>Examine the client's strategy, operations, workflows, data, and business objectives.</p>
+          </li>
+          <li class="process-step reveal">
+            <div class="process-marker"><span>02</span></div>
+            <h3>Identify</h3>
+            <p>Find bottlenecks, inefficiencies, operational risks, and areas where productivity or quality can be improved.</p>
+          </li>
+          <li class="process-step reveal">
+            <div class="process-marker"><span>03</span></div>
+            <h3>Design</h3>
+            <p>Develop a technology-enabled solution tailored to the organization's real operational needs.</p>
+          </li>
+          <li class="process-step reveal">
+            <div class="process-marker"><span>04</span></div>
+            <h3>Measure</h3>
+            <p>Define clear KPIs and continuously evaluate whether the solution creates measurable business value.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ 5. FEATURED SOLUTION ============ -->
+    <section class="section section-dark featured" id="solutions" data-section="solutions" aria-labelledby="solutions-title">
+      <div class="featured-glow" aria-hidden="true"></div>
+      <div class="container">
+        <header class="section-head section-head-light reveal">
+          <p class="eyebrow eyebrow-light">Solutions</p>
+          <h2 id="solutions-title">Featured Solution</h2>
+        </header>
+
+        <div class="project-banner reveal">
+          <div>
+            <span class="badge badge-proto"><svg aria-hidden="true"><use href="#i-layers"/></svg>Proposed Client Solution / Prototype</span>
+            <h3 class="project-title">Target Inventory Exception Assistant</h3>
+            <p class="project-sub">An AI-powered decision-support concept designed around the store-level inventory challenges a large retailer may face.</p>
+          </div>
+          <p class="project-disclaimer"><svg aria-hidden="true"><use href="#i-info"/></svg><span>Independent concept developed as an academic consulting project. Target has not commissioned, reviewed, or endorsed this work.</span></p>
+        </div>
+
+        <div class="challenge-solution">
+          <article class="cs-panel reveal">
+            <p class="cs-label">The Challenge</p>
+            <h4>Strong systems, but a lot left to interpret</h4>
+            <p>Large retailers already have sophisticated inventory and replenishment systems. However, store managers may still need to interpret large amounts of inventory, sales, shipment, and supplier information when determining which exceptions require immediate attention.</p>
+            <p class="cs-list-intro">Managers may need to understand:</p>
+            <ul class="dash-list">
+              <li>Which products are most at risk</li>
+              <li>Why a product is at risk</li>
+              <li>Whether an incoming shipment will arrive in time</li>
+              <li>Whether demand has unexpectedly increased</li>
+              <li>Whether a supplier or shipment delay is causing the issue</li>
+              <li>Which inventory exceptions should be handled first</li>
+            </ul>
+          </article>
+
+          <article class="cs-panel cs-panel-accent reveal">
+            <p class="cs-label">Our Solution</p>
+            <h4>AI-Powered Inventory Exception Assistant</h4>
+            <p>The assistant acts as a <strong>decision-support layer on top of existing inventory and replenishment systems</strong>. It turns raw operational signals into a short, prioritized list a manager can act on.</p>
+            <div class="not-replace">
+              <svg aria-hidden="true"><use href="#i-info"/></svg>
+              <p><strong>It does not replace Target's existing replenishment systems.</strong> It helps people interpret what those systems surface, faster and more consistently.</p>
+            </div>
+            <p class="cs-list-intro">It helps store managers quickly answer:</p>
+            <div class="question-grid">
+              <div class="q-chip"><span>1</span>What requires attention?</div>
+              <div class="q-chip"><span>2</span>Why is it happening?</div>
+              <div class="q-chip"><span>3</span>How urgent is it?</div>
+              <div class="q-chip"><span>4</span>What action should be taken?</div>
+            </div>
+          </article>
+        </div>
+
+        <div class="capabilities reveal">
+          <h4 class="capabilities-title">What the assistant does</h4>
+          <ul class="check-list">
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Identifies products at risk of stocking out</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Analyzes inventory levels</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Considers sales velocity</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Considers incoming shipment timing</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Detects shipment delays</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Detects potential demand spikes</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Ranks inventory exceptions by urgency</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Explains why an item is at risk</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Recommends an appropriate next action</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Generates a Top 5 Items Requiring Attention report</li>
+          </ul>
+        </div>
+
+        <!-- What the Dify prototype returns (text / Markdown) -->
+        <div class="output-step reveal">
+          <h4 class="output-step-title">Prototype output</h4>
+          <p class="output-step-sub">What the Dify workflow returns: a Top 5 report with a table and a plain-language summary for store managers.</p>
+        </div>
+
+        <div class="dify-output reveal" role="region" aria-labelledby="dify-title">
+          <div class="dify-bar">
+            <span class="dify-app"><svg class="dify-ico" aria-hidden="true"><use href="#i-layers"/></svg>Dify · Workflow output</span>
+            <span class="dify-meta">Sample run · Simulated data</span>
+          </div>
+          <div class="dify-body">
+            <h5 id="dify-title">Top 5 Items Requiring Attention</h5>
+            <div class="md-table-wrap" tabindex="0" aria-label="Prototype output table, scrolls horizontally on small screens">
+              <table class="md-table">
+                <thead>
+                  <tr><th scope="col">Rank</th><th scope="col">Item</th><th scope="col">Risk Level</th><th scope="col">Reason</th><th scope="col">Recommended Action</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>1</td><td>Coke 12pk</td><td>Critical</td><td>Stockout expected before shipment arrives</td><td>Expedite shipment</td></tr>
+                  <tr><td>2</td><td>Nike Socks</td><td>High</td><td>Incoming shipment delayed</td><td>Investigate delivery delay</td></tr>
+                  <tr><td>3</td><td>Cereal</td><td>Medium</td><td>Inventory approaching safety stock</td><td>Reorder 50 units</td></tr>
+                  <tr><td>4</td><td>Tide Detergent</td><td>Medium</td><td>Demand above recent average</td><td>Increase next replenishment</td></tr>
+                  <tr><td>5</td><td>Paper Towels</td><td>Low</td><td>Inventory slightly below target</td><td>Monitor</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p><strong>Manager summary:</strong> Coke 12pk needs attention first: current stock is expected to run out before the next shipment arrives, so expediting that shipment is recommended. Nike Socks are at high risk because the incoming delivery is delayed. Cereal and Tide Detergent should be reviewed for replenishment today. Paper Towels can be monitored.</p>
+          </div>
+        </div>
+        <p class="output-caption reveal">Representative of the prototype's text output. Exact formatting depends on the prompt and Dify app settings.</p>
+
+        <div class="callout callout-inline reveal">
+          <span class="callout-line" aria-hidden="true"></span>
+          <p>From raw inventory data to prioritized action.</p>
+        </div>
+        <p class="data-note reveal">Items, risk levels, and actions shown are simulated examples created for this prototype and do not represent actual Target inventory or operations.</p>
+      </div>
+    </section>
+
+    <!-- ============ 6. HOW THE WORKFLOW FUNCTIONS ============ -->
+    <section class="section" id="workflow" data-section="solutions" aria-labelledby="workflow-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">Under the hood</p>
+          <h2 id="workflow-title">How the solution works</h2>
+          <p class="section-lead">An eight-stage AI workflow that moves from raw data to a clear, prioritized summary for store managers.</p>
+        </header>
+
+        <ol class="pipeline">
+          <li class="pipe-step reveal">
+            <span class="pipe-icon"><svg aria-hidden="true"><use href="#i-db"/></svg></span>
+            <span class="pipe-num">Step 1</span>
+            <h3>Inventory Data</h3>
+            <p>Store-level inventory, sales velocity, shipment information, safety stock, and related operational data.</p>
+          </li>
+          <li class="pipe-step reveal">
+            <span class="pipe-icon"><svg aria-hidden="true"><use href="#i-check-circle"/></svg></span>
+            <span class="pipe-num">Step 2</span>
+            <h3>Data Validation</h3>
+            <p>Check that the required information is present and correctly formatted.</p>
+          </li>
+          <li class="pipe-step reveal">
+            <span class="pipe-icon"><svg aria-hidden="true"><use href="#i-calc"/></svg></span>
+            <span class="pipe-num">Step 3</span>
+            <h3>Metrics Calculation</h3>
+            <p>Calculate indicators such as days of supply and potential stockout timing.</p>
+          </li>
+          <li class="pipe-step reveal">
+            <span class="pipe-icon"><svg aria-hidden="true"><use href="#i-activity"/></svg></span>
+            <span class="pipe-num">Step 4</span>
+            <h3>Risk Analysis</h3>
+            <p>Determine whether factors such as low inventory, increased demand, or shipment delays create inventory risk.</p>
+          </li>
+          <li class="pipe-step reveal">
+            <span class="pipe-icon"><svg aria-hidden="true"><use href="#i-flag"/></svg></span>
+            <span class="pipe-num">Step 5</span>
+            <h3>Risk Classification</h3>
+            <p>Assign each item a Critical, High, Medium, or Low priority.</p>
+          </li>
+          <li class="pipe-step reveal">
+            <span class="pipe-icon"><svg aria-hidden="true"><use href="#i-action"/></svg></span>
+            <span class="pipe-num">Step 6</span>
+            <h3>Recommended Action</h3>
+            <p>Suggest the most appropriate response based on the identified cause.</p>
+          </li>
+          <li class="pipe-step reveal">
+            <span class="pipe-icon"><svg aria-hidden="true"><use href="#i-rank"/></svg></span>
+            <span class="pipe-num">Step 7</span>
+            <h3>Priority Ranking</h3>
+            <p>Rank inventory exceptions based on urgency.</p>
+          </li>
+          <li class="pipe-step reveal">
+            <span class="pipe-icon"><svg aria-hidden="true"><use href="#i-doc"/></svg></span>
+            <span class="pipe-num">Step 8</span>
+            <h3>Manager Summary</h3>
+            <p>Present the most important issues in clear language for store managers.</p>
+          </li>
+        </ol>
+
+        <div class="workflow-notes">
+          <div class="note-card reveal">
+            <span class="icon-badge"><svg><use href="#i-layers"/></svg></span>
+            <div>
+              <h3>Built with Dify</h3>
+              <p>The prototype workflow is developed on <strong>Dify</strong>, an AI workflow development platform, which lets each stage be designed, tested, and refined independently.</p>
+            </div>
+          </div>
+          <div class="note-card note-card-warn reveal">
+            <span class="icon-badge"><svg><use href="#i-info"/></svg></span>
+            <div>
+              <h3>About the data</h3>
+              <p>Representative simulated inventory data is used for this prototype. Flowline Consulting does not have access to Target's proprietary operational data.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 7. BUSINESS IMPACT ============ -->
+    <section class="section section-tint" id="impact" data-section="impact" aria-labelledby="impact-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">Impact</p>
+          <h2 id="impact-title">Designed for measurable impact</h2>
+          <p class="section-lead">How we propose to evaluate whether the assistant creates real value. These are success measures for a future pilot, not results already achieved.</p>
+          <span class="badge badge-outline">Proposed Success Measures</span>
+        </header>
+
+        <div class="card-grid card-grid-4">
+          <article class="kpi-card reveal">
+            <div class="kpi-top">
+              <span class="icon-badge"><svg><use href="#i-clock"/></svg></span>
+              <span class="kpi-tag">KPI 01</span>
+            </div>
+            <h3>Faster Exception Review</h3>
+            <p>Measure the time managers spend identifying and understanding high-priority inventory problems.</p>
+            <p class="kpi-measure"><span>Measured by</span> Review time per exception</p>
+          </article>
+          <article class="kpi-card reveal">
+            <div class="kpi-top">
+              <span class="icon-badge"><svg><use href="#i-shield"/></svg></span>
+              <span class="kpi-tag">KPI 02</span>
+            </div>
+            <h3>Lower Stockout Risk</h3>
+            <p>Measure whether potential stockouts are identified early enough for corrective action.</p>
+            <p class="kpi-measure"><span>Measured by</span> Lead time before projected stockout</p>
+          </article>
+          <article class="kpi-card reveal">
+            <div class="kpi-top">
+              <span class="icon-badge"><svg><use href="#i-target"/></svg></span>
+              <span class="kpi-tag">KPI 03</span>
+            </div>
+            <h3>Better Prioritization</h3>
+            <p>Evaluate whether managers can identify the most urgent inventory issues faster.</p>
+            <p class="kpi-measure"><span>Measured by</span> Time to identify top-priority items</p>
+          </article>
+          <article class="kpi-card reveal">
+            <div class="kpi-top">
+              <span class="icon-badge"><svg><use href="#i-repeat"/></svg></span>
+              <span class="kpi-tag">KPI 04</span>
+            </div>
+            <h3>More Consistent Decisions</h3>
+            <p>Evaluate whether similar inventory problems result in consistent recommendations and actions.</p>
+            <p class="kpi-measure"><span>Measured by</span> Recommendation consistency</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 8. WHY FLOWLINE ============ -->
+    <section class="section section-dark why" id="why" data-section="impact" aria-labelledby="why-title">
+      <div class="container">
+        <header class="section-head section-head-light reveal">
+          <p class="eyebrow eyebrow-light">Why Flowline</p>
+          <h2 id="why-title">Technology should solve the problem&mdash;not become the problem.</h2>
+        </header>
+
+        <div class="card-grid card-grid-3">
+          <article class="why-card reveal">
+            <span class="icon-badge icon-badge-dark"><svg><use href="#i-briefcase"/></svg></span>
+            <h3>Business First</h3>
+            <p>We begin with the operational challenge before selecting the technology.</p>
+          </article>
+          <article class="why-card reveal">
+            <span class="icon-badge icon-badge-dark"><svg><use href="#i-sliders"/></svg></span>
+            <h3>Practical AI</h3>
+            <p>We use AI where it can improve analysis, prioritization, and decision-making rather than adding unnecessary complexity.</p>
+          </article>
+          <article class="why-card reveal">
+            <span class="icon-badge icon-badge-dark"><svg><use href="#i-target"/></svg></span>
+            <h3>Measurable Results</h3>
+            <p>Every solution is connected to clear business outcomes and measurable KPIs.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 9. ABOUT / TEAM ============ -->
+    <section class="section" id="team" data-section="team" aria-labelledby="team-title">
+      <div class="container">
+        <div class="about-grid">
+          <header class="reveal">
+            <p class="eyebrow">About &amp; Team</p>
+            <h2 id="team-title">Where strategy meets operations and technology</h2>
+          </header>
+          <p class="about-text reveal">Flowline Consulting is a strategy and technology consulting team focused on improving the way organizations manage supply chains and operations. We combine business analysis, process improvement, analytics, and emerging technologies to design solutions that are practical, measurable, and scalable.</p>
+        </div>
+
+        <div class="card-grid card-grid-4 team-grid">
+          <article class="team-card reveal">
+            <div class="avatar" aria-hidden="true">AG</div>
+            <h3>Aakarsh Gupta</h3>
+            <p class="role">Consultant</p>
+          </article>
+          <article class="team-card reveal">
+            <div class="avatar" aria-hidden="true">SK</div>
+            <h3>Sanika Kothai</h3>
+            <p class="role">Consultant</p>
+          </article>
+          <article class="team-card reveal">
+            <div class="avatar" aria-hidden="true">AM</div>
+            <h3>Andrew Maynard</h3>
+            <p class="role">Consultant</p>
+          </article>
+          <article class="team-card reveal">
+            <div class="avatar" aria-hidden="true">NS</div>
+            <h3>Nathan Sauve</h3>
+            <p class="role">Consultant</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 10. CONTACT ============ -->
+    <section class="section section-tint contact" id="contact" data-section="contact" aria-labelledby="contact-title">
+      <div class="container contact-grid">
+        <div class="contact-copy reveal">
+          <p class="eyebrow">Contact</p>
+          <h2 id="contact-title">Build a smarter operation</h2>
+          <p class="section-lead">Whether the challenge involves inventory visibility, supplier performance, logistics, replenishment, or operational decision-making, Flowline Consulting helps turn complex processes into clear, actionable solutions.</p>
+          <ul class="contact-points">
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Start with the operational problem, not the tool</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Practical, measurable recommendations</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Technology applied only where it adds value</li>
+          </ul>
+        </div>
+
+        <div class="form-card reveal">
+          <form class="contact-form" id="contact-form" novalidate aria-describedby="form-note">
+            <div class="form-row">
+              <div class="field">
+                <label for="name">Name <span aria-hidden="true">*</span></label>
+                <input id="name" name="name" type="text" autocomplete="name" required aria-required="true" />
+                <p class="field-error" id="name-error" aria-live="polite"></p>
+              </div>
+              <div class="field">
+                <label for="email">Email <span aria-hidden="true">*</span></label>
+                <input id="email" name="email" type="email" autocomplete="email" required aria-required="true" />
+                <p class="field-error" id="email-error" aria-live="polite"></p>
+              </div>
+            </div>
+            <div class="field">
+              <label for="company">Company</label>
+              <input id="company" name="company" type="text" autocomplete="organization" />
+            </div>
+            <div class="field">
+              <label for="message">Message <span aria-hidden="true">*</span></label>
+              <textarea id="message" name="message" rows="5" required aria-required="true" placeholder="Tell us about the operational challenge you're facing."></textarea>
+              <p class="field-error" id="message-error" aria-live="polite"></p>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Start a Conversation <svg class="btn-icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+            <p class="form-note" id="form-note">* Required fields</p>
+          </form>
+
+          <div class="form-success" id="form-success" hidden tabindex="-1" role="status">
+            <span class="success-icon"><svg aria-hidden="true"><use href="#i-check"/></svg></span>
+            <h3>Thank you<span id="success-name"></span>.</h3>
+            <p>Your details were captured on this page. Please note that this site is a project prototype without a connected messaging service, so <strong>no email has been sent</strong> and nothing was stored.</p>
+            <button type="button" class="btn btn-secondary" id="form-reset">Start a new message</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ 11. FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a class="brand brand-light" href="#home" aria-label="Flowline Consulting, back to top">
+            <svg class="brand-mark" aria-hidden="true"><use href="#logo-mark"/></svg>
+            <span class="brand-name">Flowline <span>Consulting</span></span>
+          </a>
+          <p class="footer-tagline">Smarter flow. Stronger operations.</p>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer">
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#approach">Approach</a></li>
+            <li><a href="#solutions">Solutions</a></li>
+            <li><a href="#impact">Impact</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Flowline Consulting</p>
+        <p class="disclaimer">Flowline Consulting is an academic consulting project created for Purdue University MIS 38200. Target is used solely as the subject of a proposed consulting prototype and is not affiliated with or endorsing this project.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
