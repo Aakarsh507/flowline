@@ -1,6 +1,6 @@
-# Flowline Consulting — Website
+# MetricFlow Consulting — Website
 
-Static, dependency-free website for **Flowline Consulting** (Purdue University MIS 38200 academic consulting project).
+Static, dependency-free website for **MetricFlow Consulting** (Purdue University MIS 38200 academic consulting project).
 
 ```
 FlowlineConsulting/
@@ -10,7 +10,7 @@ FlowlineConsulting/
 └── assets/favicon.svg
 ```
 
-No build step, no npm packages. The only external request is Google Fonts (Inter + Manrope); the site falls back to system fonts if they're unavailable.
+No build step, no npm packages. The only external request is Google Fonts (Inter, Manrope and Montserrat); the site falls back to system fonts if they're unavailable.
 
 ## Run locally
 
@@ -30,7 +30,7 @@ then open http://localhost:5500. (VS Code's "Live Server" extension also works.)
 1. Create a new **public** repository on GitHub (e.g. `flowline-consulting`).
 2. Upload the contents of this folder (`index.html` must be at the repo root), or push with git:
    ```bash
-   git init && git add . && git commit -m "Flowline Consulting site"
+   git init && git add . && git commit -m "MetricFlow Consulting site"
    git branch -M main
    git remote add origin https://github.com/<your-username>/flowline-consulting.git
    git push -u origin main
@@ -70,6 +70,6 @@ Right now the form validates input and shows a confirmation that clearly says **
 
 The site keeps these distinctions in place on purpose; keep them if you edit content:
 - The Target Inventory Exception Assistant is labeled a **proposed client solution / prototype**, and the page states Target has not commissioned or endorsed it.
-- All prototype output is labeled **simulated**; the site states Flowline has no access to Target's proprietary data.
+- All prototype output is labeled **simulated**; the site states MetricFlow has no access to Target's proprietary data.
 - Impact cards are **proposed success measures**, with no percentages or claimed results.
 - The footer states this is an academic project for Purdue University MIS 38200.

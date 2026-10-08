@@ -1,4 +1,4 @@
-/* Flowline Consulting — site interactions (no dependencies) */
+/* MetricFlow Consulting — site interactions (no dependencies) */
 (function () {
   'use strict';
 
